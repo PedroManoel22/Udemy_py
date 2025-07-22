@@ -1,6 +1,7 @@
 # Exercícios
 # Crie funções que duplicam, triplicam e quadruplicam
 # o número recebido como parâmetro.
+# Introzução aos closure
 
 
 def criar_multiplicador(multiplicador):
