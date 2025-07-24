@@ -16,7 +16,7 @@ perguntas = [
         'Opções': ['4', '5', '2', '1'],
         'Resposta': '5',
     },
-]
+] 
 total_acertadas = 0
 for itens in perguntas:
     total_respostas = len(itens)
