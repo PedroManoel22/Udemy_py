@@ -11,6 +11,27 @@ Requisitos:
         [1, 4, 9, 8, ->9<-, 4, 8] (retorne 9)
     Se não encontrar duplicados na lista, retorne -1
 """
+
+def primeiro_duplicado(listas):
+    nova_lista = []
+    for lista in listas:
+        conjunto = set(lista)
+        if len(conjunto) == len(lista):
+            print(lista, -1)
+        else:
+            for elemento in lista:
+                if elemento not in nova_lista:
+                    nova_lista.append(elemento)
+                else:
+                    print(lista, elemento)
+                    break
+            nova_lista.clear()
+                
+
+        
+       
+           
+            
 lista_de_listas_de_inteiros = [
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     [9, 1, 8, 9, 9, 7, 2, 1, 6, 8],
@@ -24,4 +45,6 @@ lista_de_listas_de_inteiros = [
     [4, 7, 6, 5, 2, 9, 2, 1, 2, 1],
     [5, 3, 1, 8, 5, 7, 1, 8, 8, 7],
     [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+    [1, 4, 9, 8, 9, 4, 8],
 ]
+primeiro_duplicado(lista_de_listas_de_inteiros)
