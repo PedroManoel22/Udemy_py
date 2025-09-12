@@ -14,9 +14,13 @@ def print_bunito(x):
         print(i)
 
     print()
+
+
 def aumentar_preco(produto):
 
     return {**produto, 'preco': produto['preco'] + 1}
+
+
 
 novos_produtos = list(map(aumentar_preco, produtos))
 
