@@ -18,9 +18,11 @@ import json
 # with open('aula_191.json', 'w', encoding='utf8') as arquivo:
 #     json.dump(pessoa, arquivo, indent=2) # ident, serve para formatar o arquivo JSON
 
+
+# carregando o arquivo JSON
 caminho_arquivo = 'C:\\Users\\Pedro\\Documents\\GitHub\\aula_191.json'
 with open(caminho_arquivo, 'r', encoding='utf8') as arquivo:
     pessoa = json.load(arquivo)
-    print(pessoa)
+    print(pessoa['nome'])
 
 
