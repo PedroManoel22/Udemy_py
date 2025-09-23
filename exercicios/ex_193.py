@@ -1,7 +1,5 @@
 from os import system
 
-# fazer uma função para cada comando
-
 tarefas = []
 comandos = ['listar', 'desfazer', 'refazer', 'limpar']
 tarefa_2 = []
@@ -10,13 +8,33 @@ def listar(tarefas):
     if not tarefas:
         if opcao ==  'listar':
             print('Não a nada para listar')
+            print()
             return
     print('TAREFAS:')
     for tarefa in tarefas:
         print(f'\t{tarefa}')
     print()
-    
-        
+
+
+def desfazer(tarefas):
+    if not tarefas:
+        print('Não a nada para desfazer')
+        print()
+        return
+    tarefa = tarefas.pop()
+    tarefa_2.append(tarefa)
+    return tarefa
+
+
+def refazer(tarefas):
+    if not tarefas:
+        print('Não a nada para refazer')
+        print()
+        return
+    tarefa = tarefa_2.pop()
+    tarefas.append(tarefa)
+    return tarefa
+
 
 
 while True:
@@ -26,30 +44,21 @@ while True:
     print()
 
     if opcao in comandos:
-        if not tarefas:
-            if opcao == 'desfazer':
-                print('Não a nada para desfazer')
-            
-            if opcao == 'refazer':
-                print('Não a nada para refazer')
-        else:
             if opcao ==  'listar':
                 listar(tarefas)
 
             if opcao == 'desfazer':
-                tarefa = tarefas.pop()
-                tarefa_2.append(tarefa)
-            
+                desfazer(tarefas)
+                listar(tarefas)
+                
             if opcao == 'refazer':
-                tarefa = tarefa_2.pop()
-                tarefas.append(tarefa)
-
+                refazer(tarefas)
+                listar(tarefas)
+               
             if opcao == 'limpar':
                 system('cls')
 
     else:
         tarefas.append(opcao)
-        
-
-        print('TAREFAS:')
+        listar(tarefas)
         
