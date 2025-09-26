@@ -20,7 +20,7 @@ import json
 
 
 # carregando o arquivo JSON
-caminho_arquivo = 'C:\\Users\\Pedro\\Documents\\GitHub\\aula_191.json'
+caminho_arquivo = 'C:\\Users\\Pedro\\Documents\\GitHub\\Udemy_py\\exjson\\aula_191.json'
 with open(caminho_arquivo, 'r', encoding='utf8') as arquivo:
     pessoa = json.load(arquivo)
     print(pessoa['nome'])
