@@ -1,5 +1,5 @@
 import json
-
+from pprint import pprint 
 # pessoa = {
 #     'nome': 'Pedro',
 #     'Sobrenome': 'Manoel',
@@ -23,6 +23,6 @@ import json
 caminho_arquivo = 'C:\\Users\\Pedro\\Documents\\GitHub\\Udemy_py\\exjson\\aula_191.json'
 with open(caminho_arquivo, 'r', encoding='utf8') as arquivo:
     pessoa = json.load(arquivo)
-    print(pessoa['nome'])
+    pprint(pessoa)
 
 
