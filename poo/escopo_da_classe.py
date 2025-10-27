@@ -6,5 +6,5 @@ class Animal:
         
     
 
-leao = Animal(nome= 'leão')
-print(leao.nome)
+#leao = Animal(nome= 'leão')
+print(Animal.nome)
