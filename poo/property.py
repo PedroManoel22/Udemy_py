@@ -14,7 +14,7 @@ class Caneta:
 
     
     @property
-    def cor(self): # não é um método, é um atributo
+    def cor(self): # não é um método, é um atributo, O property permite que um método seja acessado como atributo, sem a necessidade de chamarmos como uma função
         return self.cor_tinta
 
 
