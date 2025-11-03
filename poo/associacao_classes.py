@@ -26,3 +26,4 @@ escritor.ferramenta = maquina
 print(escritor.ferramenta.escrever())
 print(caneta.escrever())
 print(f'{escritor.nome} está escrevendo com {escritor.ferramenta.escrever()}')
+
