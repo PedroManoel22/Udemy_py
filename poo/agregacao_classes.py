@@ -8,6 +8,8 @@
 # A associação não especifica como um objeto controla
 # o ciclo de vida de outro objeto.
 # Carrinho de compras agrega produtos
+
+
 class CarrinhoDeCompras:
     def __init__(self):
         self._produtos = []

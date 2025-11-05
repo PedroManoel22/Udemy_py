@@ -1,3 +1,7 @@
+# Associação -> usa
+# Agregação  -> tem
+# Composição -> é dono de 
+
 class Escritor:
     def __init__(self, nome):
         self.nome = nome
