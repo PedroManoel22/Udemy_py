@@ -5,6 +5,9 @@
 #     -> sub class, child class, derived class
 
 class Pessoa:
+
+    cpf = '12345678912'
+
     def __init__(self, nome, sobrenome):
         self.nome = nome
         self.sobrenome = sobrenome
@@ -12,7 +15,7 @@ class Pessoa:
     def falar_nome_classe(self):
         print(self.nome, self.sobrenome, self.__class__.__name__)
 class Cliente(Pessoa): 
-    ...
+    cpf = 'oi'
 
 class Aluno(Pessoa):
     ...
@@ -21,4 +24,5 @@ c1 = Cliente('Pedro', 'Jorginho')
 aluno = Aluno('Fernadinho', 'BB')
 c1.falar_nome_classe()
 aluno.falar_nome_classe()
-help(Cliente)
+# help(Cliente)
+print(c1.cpf)
