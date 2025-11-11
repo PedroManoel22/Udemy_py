@@ -19,4 +19,3 @@ caneta = Caneta('Azul')
 print(caneta.cor)
 caneta.cor = 'Rosa'
 print(caneta.cor)
-
