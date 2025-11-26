@@ -1,5 +1,8 @@
 # Polimorfismo -> é o princípio que permite que classes derivadas de uma mesma
 # superclasse tenham métodos iguais (com mesma assinatura) mas com comportamentos diferentes
+# Princípios SOLID -> L = Liskov Substitution Principle:
+# Objetos de uma superclasse devem ser substituíveis
+# por objetos de uma classe sem quebrar a aplicação
 
 from abc import ABC, abstractmethod
 
