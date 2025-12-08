@@ -1,26 +1,3 @@
-# Tudo que for fazer e ter que abrir e fechar, conectar e desconectar
-# agarrar e desagarrar capturar e liberar, você pode fazer um context_manager
-
-
-# ex 
-# with open ('caminho_arquivo', 'w') as arquivo:
-
-# class MyContextManager:
-#     def __init__(self):
-#         print('INIT')
-
-#     def __enter__(self):
-#         print('ENTER')
-#         return # Este retorno vai para a variavel "alguma_coisa"
-
-#     def __exit__(self, class_exception, expeption_, traceback_):
-#         print('EXIT')
-
-# instancia = MyContextManager('caminho_arquivo', 'w', encoding='utf8')
-
-# with instancia as alguma_coisa: # o retorno do  __enter__ vai para esta variável chamada de "alguma_coisa"
-#     print('WITH', alguma_coisa)
-
 class MyOpen:
     def __init__(self, caminho_arquivo, modo):
         self.caminho_arquivo = caminho_arquivo
@@ -36,11 +13,20 @@ class MyOpen:
         print('Fechando arquivo...')
         self._arquivo.close()
 
+        # raise class_exception(*expeption_.args).with_traceback(traceback_) # levanta a mesma mensagem da exceção
+
+        # print(class_exception)
+        # print(expeption_)
+        # print(traceback_)
+
+        # return True # Tratei o erro, ignorando 
+        expeption_.add_note('Minha nota heheh')
+
 
 
 with MyOpen('aula149.txt', 'w') as arquivo: # o retorno do  __enter__ vai para esta variável chamada de "arquivo"
     arquivo.write('Linha 1\n')
     arquivo.write('Linha 2\n')
-    arquivo.write('Linha 3\n')
+    arquivo.write('Linha 3\n', 123)
     arquivo.write('Linha 4\n')
     print('WITH', arquivo)
