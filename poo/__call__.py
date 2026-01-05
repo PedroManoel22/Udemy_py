@@ -7,7 +7,7 @@ class CallMe:
         self.phone = phone
     
     def __call__(self, nome): # faz a instância ser executavel
-        print(f'{nome} está Chamando,', self.phone)
+        print(f'\n{nome} está Chamando, {self.phone}\n')
 
 
 call1 = CallMe('12316545612')
