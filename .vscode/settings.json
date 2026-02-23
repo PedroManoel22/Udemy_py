@@ -21,5 +21,6 @@
         "editor.wordBasedSuggestions": "off",
         
     },
-    "explorer.compactFolders": false
+    "explorer.compactFolders": false,
+    "python.analysis.typeCheckingMode": "basic"
 }
