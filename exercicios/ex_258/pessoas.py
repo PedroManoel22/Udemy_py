@@ -1,13 +1,13 @@
-class Pessoa: # os getters e stters não são necessário neste caso, estamos usando apenas para treinar
+class Pessoa:  # os getters e stters não são necessário neste caso, estamos usando apenas para treinar
 
     def __init__(self, nome: str, idade: int) -> None:
         self.nome = nome
         self.idade = idade
-    
+
     @property
     def nome(self):
         return self._nome
-    
+
     @nome.setter
     def nome(self, nome: str):
         self._nome = nome
@@ -19,12 +19,12 @@ class Pessoa: # os getters e stters não são necessário neste caso, estamos us
     @idade.setter
     def idade(self, idade: int):
         self._idade = idade
-    
+
     def __repr__(self):
         class_name = type(self).__name__
-        attrs = f'{self.nome!r}, {self.idade!r}'
-        return f'{class_name} {attrs}'
-        
+        attrs = f"({self.nome!r}, {self.idade!r})"
+        return f"{class_name} {attrs}"
+
 
 class Cliente(Pessoa):
     def __init__(self, nome: str, idade: int) -> None:
@@ -32,9 +32,15 @@ class Cliente(Pessoa):
         self.conta: contas.Conta | None = None
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import contas
-    c1 = Cliente('Luiz', 30)
+
+    c1 = Cliente("Luiz", 30)
     c1.conta = contas.ContaCorrente(111, 222, 0, 0)
     print(c1)
     print(c1.conta)
+    print()
+    c2 = Cliente("Pedro", 28)
+    c2.conta = contas.ContaPoupanca(333, 666, 10)
+    print(c2)
+    print(c2.conta)

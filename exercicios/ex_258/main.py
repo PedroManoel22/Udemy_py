@@ -27,12 +27,4 @@
 #     * Checar se o cliente é daquele banco
 #     * Checar se a conta é daquele banco
 # Só será possível sacar se passar na autenticação do banco (descrita acima)
-# Banco autentica por um método.
-
-import contas
-
-
-
-   
-
-        
+# Banco autentica por um método (autenticar).
