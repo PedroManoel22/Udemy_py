@@ -2,7 +2,7 @@
 # datetime(ano, mês, dia)
 # datetime(ano, mês, dia, horas, minutos, segundos)
 # datetime.strptime('DATA', 'FORMATO')
-# datetime.now()
+# datetime.now() # pega data e hora atual
 # https://pt.wikipedia.org/wiki/Era_Unix
 # datetime.fromtimestamp(Unix Timestamp)
 # https://docs.python.org/3/library/datetime.html
@@ -13,12 +13,22 @@
 
 from datetime import datetime
 
-print()
+# from pytz import timezone
 
-data_str_data = "2024-04-20 07:49:23"
-data_str_fmt = "%Y-%m-%d %H:%M:%S"
+# print()
 
-# data = datetime(2026, 4, 20, 7, 49, 23)
-data = datetime.strptime(data_str_data, data_str_fmt)
-print(data)
-print()
+# data_str_data = "2024-04-20 07:49:23"
+# data_str_fmt = "%Y-%m-%d %H:%M:%S"'''''''''
+
+# # data = datetime(2026, 4, 20, 7, 49, 23)
+# data = datetime.strptime(data_str_data, data_str_fmt)
+# print(data)
+# print()
+
+# data_atual = datetime.now(timezone("Asia/Tokyo"))
+# print(data_atual)
+
+
+data = datetime.now()
+print(data.timestamp())
+print(datetime.fromtimestamp(1772191129.856665))
