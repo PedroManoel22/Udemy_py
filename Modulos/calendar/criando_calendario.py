@@ -14,4 +14,18 @@ import calendar
 # print(calendar.calendar(2022))
 # print(calendar.month(2022, 12))
 
-print(calendar.monthrange(2022, 12))  # saber o ultimo dia do mês
+# ultimo_dia = calendar.monthrange(2022, 12)
+# print(ultimo_dia)  # saber o ultimo dia do mês
+
+# numero_primeiro_dia, ultimo_dia = calendar.monthrange(2022, 12)
+# print(numero_primeiro_dia, ultimo_dia)
+# print(
+#     calendar.day_name[numero_primeiro_dia]
+# )  # saber o nome do primeiro dia de dezembro de 2022
+# print(calendar.day_name[calendar.weekday(2022, 12, ultimo_dia)])
+
+
+for week in calendar.monthcalendar(
+    2022, 12
+):  # os números 0 que aparecem são dias qeu não são do mês 12
+    print(week)
