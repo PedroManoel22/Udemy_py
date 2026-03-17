@@ -8,6 +8,7 @@ HOME = os.path.expanduser("~")  # pegando a home do usuário
 DESKTOP = os.path.join(HOME, "Desktop")
 PASTA_ORIGINAL = os.path.join(DESKTOP, "exemplo")
 NOVA_PASTA = os.path.join(DESKTOP, "Nova_pasta")
+
 print(NOVA_PASTA)
 
 os.makedirs(
