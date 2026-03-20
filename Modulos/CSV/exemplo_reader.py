@@ -27,8 +27,19 @@ from pathlib import Path
 
 CAMINHO_CSV = Path(__file__).parent / "ex.csv"
 print(CAMINHO_CSV)
-
+print()
+# ler em forma de lista
 with open(CAMINHO_CSV, "r", encoding="utf-8") as f_object:
     leitor = csv.reader(f_object)
-    next(leitor)
-    print(next(leitor))
+    for linha in leitor:
+        print(linha)
+
+print()
+
+# ler em forma de dicionário
+with open(CAMINHO_CSV, "r", encoding="utf-8") as f_object:
+    leitor = csv.DictReader(f_object)
+    for linha in leitor:
+        print(linha["Nome"], linha["Idade"], linha["Endereço"])
+
+print()
