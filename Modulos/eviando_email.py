@@ -27,7 +27,7 @@ smtp_password = os.getenv("EMAIL_PASSWORD", "")
 with open(CAMINHO_HTML, "r", encoding="utf-8") as arquivo:
     texto_arquivo = arquivo.read()
     template = Template(texto_arquivo)
-    texto_email = template.substitute(nome="João")
+    texto_email = template.substitute(nome="Helena")
 
 # Transformar nossa mensagem em MIMEMultipart
 mime_multipart = MIMEMultipart()
