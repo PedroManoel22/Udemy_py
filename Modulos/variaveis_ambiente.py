@@ -13,6 +13,14 @@
 # https://pypi.org/project/python-dotenv/
 # OBS.: sempre lembre-se de criar um .env-example
 
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()  # Por padrão busca o .env na raiz
+
+# print(os.environ) # vendo todas as variaveis de ambiente
+
+print(
+    os.getenv("BD_PASSWORD")
+)  # lendo a variavel de ambiente chamada de BD_PASSWORD, que está no .env
