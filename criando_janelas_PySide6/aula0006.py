@@ -10,70 +10,66 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-app = QApplication(sys.argv)
-window = QMainWindow()
-central_widget = QWidget()
-window.setCentralWidget(central_widget)
-window.setWindowTitle("Minha Janela")
 
-botao1 = QPushButton("Texto do botão")
-botao1.setStyleSheet("font-size: 40px")
+class MyWindow(QMainWindow):
+    def __init__(self, parent=None):
+        super().__init__(parent)
 
-botao2 = QPushButton("Botão 2")
-botao2.setStyleSheet("font-size: 80px")
+        # Botão
+        self.botao1 = self.make_button("Texto do botão")
+        self.botao1.clicked.connect(self.segunda_acao_marcada)
 
-botao3 = QPushButton("Botão 3")
-botao3.setStyleSheet("font-size: 60px")
+        self.botao2 = self.make_button("Botão 2")
+
+        self.botao3 = self.make_button("Botão 3")
+
+        self.central_widget = QWidget()
+
+        self.setCentralWidget(self.central_widget)
+        self.setWindowTitle("Minha Janela")
+
+        self.grid_layout = QGridLayout()
+        self.central_widget.setLayout(
+            self.grid_layout
+        )  # defini o grid_layout para o widget central
+
+        self.grid_layout.addWidget(self.botao1, 1, 1, 1, 1)
+        self.grid_layout.addWidget(self.botao2, 1, 2, 1, 1)
+        self.grid_layout.addWidget(self.botao3, 3, 1, 1, 2)
+
+        # Status bar
+        self.status_bar = self.statusBar()
+        self.status_bar.showMessage("Motrar Mensagem na barra")
+
+        # menuBar
+        self.menu = self.menuBar()
+        self.primeiro_menu = self.menu.addMenu("Primeiro Menu")
+        self.primeira_acao = self.primeiro_menu.addAction("Primeira Ação")
+        self.primeira_acao.triggered.connect(self.muda_mensagem_da_status_bar)
+        # Quando essa ação for clicada o slot_example será executado
+
+        self.segunda_acao = self.primeiro_menu.addAction("Segunda Ação")
+        self.segunda_acao.setCheckable(True)  # muda ação para "liga-desliga"
+        self.segunda_acao.toggled.connect(self.segunda_acao_marcada)
+        self.segunda_acao.hovered.connect(self.segunda_acao_marcada)
+
+    @Slot()
+    def muda_mensagem_da_status_bar(self):
+        self.status_bar.showMessage("O meu slot foi executado")
+
+    @Slot()
+    def segunda_acao_marcada(self):  # já é padrão vim o checked
+        print("Está marcado?", self.segunda_acao.isChecked())
+
+    def make_button(self, text):
+        btn = QPushButton(text)
+        btn.setStyleSheet("font-size: 40px")
+        return btn
 
 
-layout = QGridLayout()
-central_widget.setLayout(layout)  # defini o layout para o widget central
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
 
-layout.addWidget(botao1, 1, 1, 1, 1)
-layout.addWidget(botao2, 1, 2, 1, 1)
-layout.addWidget(botao3, 3, 1, 1, 2)
-
-
-@Slot()
-def slot_example(status_bar):
-    def inner():
-        status_bar.showMessage("O meu slot foi executado")
-
-    return inner
-
-
-@Slot()
-def outro_slot(checked):  # já é padrão vim o checked
-    print("Está marcado?", checked)
-
-
-@Slot()
-def terceiro_slot(acao):  # é a mesma coisa que foi feito no triggered da primeira ação
-    """Toda vez que passarmos o mouse encima da segunda ação retornamos o checked"""
-
-    def inner():
-        outro_slot(acao.isChecked())
-
-    return inner
-
-
-# Status bar
-status_bar = window.statusBar()
-status_bar.showMessage("Motrar Mensagem na barra")
-
-# menuBar
-menu = window.menuBar()
-primeiro_menu = menu.addMenu("Primeiro Menu")
-primeira_acao = primeiro_menu.addAction("Primeira Ação")
-primeira_acao.triggered.connect(slot_example(status_bar))
-# Quando essa ação for clicada o slot_example será executado
-
-segunda_acao = primeiro_menu.addAction("Segunda Ação")
-segunda_acao.setCheckable(True)  # muda ação para "liga-desliga"
-segunda_acao.toggled.connect(outro_slot)
-segunda_acao.hovered.connect(terceiro_slot(segunda_acao))
-
-botao1.clicked.connect(terceiro_slot(segunda_acao))
-
-window.show()
-app.exec()  # loop da aplicação
+    window = MyWindow()
+    window.show()
+    app.exec()  # loop da aplicação
