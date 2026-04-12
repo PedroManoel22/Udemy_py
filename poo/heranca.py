@@ -15,6 +15,8 @@ class Pessoa:
 
     def falar_nome_classe(self):
         print(self.nome, self.sobrenome, self.__class__.__name__)
+
+        
 class Cliente(Pessoa): 
     cpf = 'oi'
 
