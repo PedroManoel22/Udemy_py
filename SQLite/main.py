@@ -28,7 +28,6 @@ cursor.execute(
 connection.commit()
 
 # Registrar valores nas colunas da tabela
-# CUIDADO: sql injection
 sql = f"INSERT INTO {TABLE_NAME}(name, weight) VALUES(?, ?)"
 cursor.execute(sql, ["Pedro", 45])
 connection.commit()
