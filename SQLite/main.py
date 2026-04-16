@@ -9,11 +9,11 @@ TABLE_NAME = "customers"
 connection = sqlite3.connect(DB_FILE)
 cursor = connection.cursor()
 
-# # Deletar a tabela inteira
-# cursor.execute(f"DELETE FROM {TABLE_NAME}")
+# Deletar a tabela inteira
+cursor.execute(f"DELETE FROM {TABLE_NAME}")
 
-# # Zerar o id da tabela
-# cursor.execute(f"DELETE FROM sqlite_sequence WHERE name='{TABLE_NAME}'")
+# Zerar o id da tabela
+cursor.execute(f"DELETE FROM sqlite_sequence WHERE name='{TABLE_NAME}'")
 
 # Cria a tabela
 cursor.execute(
@@ -28,11 +28,17 @@ cursor.execute(
 connection.commit()
 
 # Registrar valores nas colunas da tabela
+
 sql = f"INSERT INTO {TABLE_NAME}(name, weight) VALUES(?, ?)"
 cursor.execute(sql, ["Pedro", 45])
-connection.commit()
 
-print(sql)
+# inserindo vários valores
+cursor.executemany(sql, [["Pedro", 62], ["Luiz", 5]])  # Também podemos usar tuplas
+
+connection.commit()
 
 cursor.close()
 connection.close()
+
+if __name__ == "__main__":
+    print(sql)
