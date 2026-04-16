@@ -9,11 +9,11 @@ TABLE_NAME = "customers"
 connection = sqlite3.connect(DB_FILE)
 cursor = connection.cursor()
 
-# Deletar a tabela inteira
-cursor.execute(f"DELETE FROM {TABLE_NAME}")
+# # Deletar a tabela inteira
+# cursor.execute(f"DELETE FROM {TABLE_NAME}")
 
-# Zerar o id da tabela
-cursor.execute(f"DELETE FROM sqlite_sequence WHERE name='{TABLE_NAME}'")
+# # Zerar o id da tabela
+# cursor.execute(f"DELETE FROM sqlite_sequence WHERE name='{TABLE_NAME}'")
 
 # Cria a tabela
 cursor.execute(
