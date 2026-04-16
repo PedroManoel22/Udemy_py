@@ -1,6 +1,10 @@
 import sqlite3
 from pathlib import Path
 
+# CRUD - Create Read     Update    Delete
+# SQL -  INSERT SELECT   UPDATE    DELETE
+
+
 ROOT_DIR = Path(__file__).parent
 DB_NAME = "sb.sqlite3"
 DB_FILE = ROOT_DIR / DB_NAME
@@ -37,6 +41,7 @@ cursor.executemany(sql, [["Pedro", 62], ["Luiz", 5]])  # Também podemos usar tu
 
 connection.commit()
 
+# Fechando a conexão
 cursor.close()
 connection.close()
 
