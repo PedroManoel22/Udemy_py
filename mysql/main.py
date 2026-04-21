@@ -36,7 +36,18 @@ with connection:
     with connection.cursor() as cursor:
         # SQL
         sql = f"INSERT INTO {TABLE_NAME} (nome, idade) VALUES (%s, %s)"
-        data = (("João", 30), ("Maria", 25), ("Pedro", 35))
+        data = (
+            ("João", 30),
+            ("Maria", 25),
+            ("Pedro", 35),
+            ("Fernando", 28),
+            ("Ana", 22),
+            ("Carla", 27),
+            ("Lucas", 32),
+            ("Mariana", 24),
+            ("Rafael", 29),
+            ("Sofia", 26),
+        )
 
         result = cursor.executemany(sql, data)
 
