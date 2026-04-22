@@ -121,3 +121,17 @@ with connection:
         sql = f"DELETE FROM {TABLE_NAME} WHERE nome = %s"
         cursor.execute(sql, ("Carla",))
     connection.commit()
+
+    # Editando valores da tabela UPDATE
+    print("\n-----------------------------------------------")
+    print("Editando Ana...")
+    with connection.cursor() as cursor:
+        # SQL
+        sql = f"UPDATE {TABLE_NAME} SET nome = %s, idade = %s WHERE id = %s"
+        cursor.execute(sql, ("heheheh", 36, 4))
+        connection.commit()
+
+        cursor.execute(f"SELECT * FROM {TABLE_NAME}")
+
+        for row in cursor.fetchall():
+            print(row)
