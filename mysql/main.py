@@ -7,6 +7,7 @@ import os
 
 import dotenv
 import pymysql
+import pymysql.cursors
 
 TABLE_NAME = "customers"
 dotenv.load_dotenv()
@@ -16,6 +17,7 @@ connection = pymysql.connect(
     user=os.environ["MYSQL_USER"],
     password=os.environ["MYSQL_PASSWORD"],
     database=os.environ["MYSQL_DATABASE"],
+    cursorclass=pymysql.cursors.DictCursor,  # retorna os resultados como dicionário
 )
 
 # print(os.environ["MYSQL_DATABASE"])
@@ -78,7 +80,7 @@ with connection:
     connection.commit()
 
     # Lendo valores da tabela com SELECT
-
+    print("Lendo valores da tabela...")
     with connection.cursor() as cursor:
         # SQL
         sql = f"SELECT * FROM {TABLE_NAME}"  # * -> todos os campos
@@ -90,7 +92,7 @@ with connection:
             print(row)
 
     print("\n-----------------------------------------------")
-
+    print("Lendo valores da tabela com idade acima de 27...")
     # Lendo valores da tabela com WHERE
     with connection.cursor() as cursor:
         # SQL
@@ -103,7 +105,7 @@ with connection:
 
     # Lendo valores da tabela com WHERE com BETWEEN
     print("\n-----------------------------------------------")
-
+    print("Lendo valores da tabela com id entre 2 e 4...")
     with connection.cursor() as cursor:
         # SQL
         sql = f"SELECT * FROM {TABLE_NAME} WHERE id BETWEEN %s AND %s"
@@ -133,5 +135,10 @@ with connection:
 
         cursor.execute(f"SELECT * FROM {TABLE_NAME}")
 
+        # for row in cursor.fetchall():
+        #     _id, nome, idade = row
+        #     print(_id, nome, idade)
+
         for row in cursor.fetchall():
-            print(row)
+            _id, nome, idade = row.values()
+            print(_id, nome, idade)
