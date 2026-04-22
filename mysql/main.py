@@ -107,3 +107,12 @@ with connection:
 
         for row in result:
             print(row)
+
+    # Deletando valores da tabela com DELETE
+    print("\n-----------------------------------------------")
+    print("Deletando Carla...")
+    with connection.cursor() as cursor:
+        # SQL
+        sql = f"DELETE FROM {TABLE_NAME} WHERE nome = %s"
+        cursor.execute(sql, ("Carla",))
+    connection.commit()
