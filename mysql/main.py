@@ -33,20 +33,37 @@ with connection:
 
     connection.commit()
 
+    # Inserindo elementos na tabela
+    # with connection.cursor() as cursor:
+    #     # SQL
+    #     sql = f"INSERT INTO {TABLE_NAME} (nome, idade) VALUES (%s, %s)"
+    #     data = (
+    #         ("João", 30),
+    #         ("Maria", 25),
+    #         ("Pedro", 35),
+    #         ("Fernando", 28),
+    #         ("Ana", 22),
+    #         ("Carla", 27),
+    #         ("Lucas", 32),
+    #         ("Mariana", 24),
+    #         ("Rafael", 29),
+    #         ("Sofia", 26),
+    #     )
+
+    #     result = cursor.executemany(sql, data)
+    #     # print(result)  # número de linhas afetadas
+    # connection.commit()
+
+    # Inserindo elementos na tabela usando dicionário
     with connection.cursor() as cursor:
         # SQL
-        sql = f"INSERT INTO {TABLE_NAME} (nome, idade) VALUES (%s, %s)"
+        sql = f"INSERT INTO {TABLE_NAME} (nome, idade) VALUES (%(nome)s, %(idade)s)"
         data = (
-            ("João", 30),
-            ("Maria", 25),
-            ("Pedro", 35),
-            ("Fernando", 28),
-            ("Ana", 22),
-            ("Carla", 27),
-            ("Lucas", 32),
-            ("Mariana", 24),
-            ("Rafael", 29),
-            ("Sofia", 26),
+            {"nome": "Luiz", "idade": 31},
+            {"nome": "Carla", "idade": 27},
+            {"nome": "Lucas", "idade": 32},
+            {"nome": "Ana", "idade": 22},
+            {"nome": "Fernando", "idade": 28},
         )
 
         result = cursor.executemany(sql, data)
@@ -54,3 +71,39 @@ with connection:
         # print(result)  # número de linhas afetadas
 
     connection.commit()
+
+    # Lendo valores da tabela com SELECT
+
+    with connection.cursor() as cursor:
+        # SQL
+        sql = f"SELECT * FROM {TABLE_NAME}"  # * -> todos os campos
+        cursor.execute(sql)
+
+        result = cursor.fetchall()
+
+        for row in result:
+            print(row)
+
+    print("\n-----------------------------------------------")
+
+    # Lendo valores da tabela com WHERE
+    with connection.cursor() as cursor:
+        # SQL
+        sql = f"SELECT * FROM {TABLE_NAME} WHERE idade > %s"  # WHERE id = 2
+        cursor.execute(sql, (27,))
+        result = cursor.fetchall()
+
+        for row in result:
+            print(row)
+
+    # Lendo valores da tabela com WHERE com BETWEEN
+    print("\n-----------------------------------------------")
+
+    with connection.cursor() as cursor:
+        # SQL
+        sql = f"SELECT * FROM {TABLE_NAME} WHERE id BETWEEN %s AND %s"
+        cursor.execute(sql, (2, 4))
+        result = cursor.fetchall()
+
+        for row in result:
+            print(row)
