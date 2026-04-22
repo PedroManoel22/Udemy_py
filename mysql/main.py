@@ -64,6 +64,11 @@ with connection:
             {"nome": "Lucas", "idade": 32},
             {"nome": "Ana", "idade": 22},
             {"nome": "Fernando", "idade": 28},
+            {"nome": "Maria", "idade": 25},
+            {"nome": "Pedro", "idade": 35},
+            {"nome": "Mariana", "idade": 24},
+            {"nome": "Rafael", "idade": 29},
+            {"nome": "Sofia", "idade": 26},
         )
 
         result = cursor.executemany(sql, data)
