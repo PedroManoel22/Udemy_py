@@ -126,19 +126,37 @@ with connection:
 
     # Editando valores da tabela UPDATE
     print("\n-----------------------------------------------")
-    print("Editando Ana...")
+    print("Editando Ana id (4)...")
     with connection.cursor() as cursor:
         # SQL
         sql = f"UPDATE {TABLE_NAME} SET nome = %s, idade = %s WHERE id = %s"
         cursor.execute(sql, ("heheheh", 36, 4))
         connection.commit()
 
-        cursor.execute(f"SELECT * FROM {TABLE_NAME}")
-
         # for row in cursor.fetchall():
         #     _id, nome, idade = row
         #     print(_id, nome, idade)
 
-        for row in cursor.fetchall():
-            _id, nome, idade = row.values()
-            print(_id, nome, idade)
+        resultFromSelect = cursor.execute(f"SELECT * FROM {TABLE_NAME}")
+        result = cursor.fetchall()
+
+        for row in result:
+            print(row)
+
+        print("\nresultFromSelect", resultFromSelect)  # linhas afetadas pelo SELECT
+        print("len(result)", len(result))  # número de linhas retornadas pelo SELECT
+        print(
+            "rowcount", cursor.rowcount
+        )  # número de linhas afetadas pelo último comando executado
+
+        sql = f"INSERT INTO {TABLE_NAME} (nome, idade) VALUES (%(nome)s, %(idade)s)"
+        data = ({"nome": "Luiz", "idade": 55555},)
+
+        result = cursor.executemany(sql, data)
+
+        # print(result)  # número de linhas afetadas
+
+        connection.commit()
+        print("lastrowid", cursor.lastrowid)  # id do último registro inserido
+
+        print("rownumber", cursor.rownumber)  # número da linha atual do cursor
